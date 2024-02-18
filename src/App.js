@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Container, Grid } from '@mui/material';
 import { Properties } from './pages/properties/Properties';
 import { AddProperties } from './pages/addProperty/AddProperty';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
