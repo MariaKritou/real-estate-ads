@@ -1,6 +1,3 @@
-import { useEffect } from "react"
-import { toast } from "react-toastify"
-
 export const Properties = () => {
 
     
