@@ -3,6 +3,7 @@ import { TextField, MenuItem, Button, Container, FormControlLabel, Checkbox, Gri
 import _ from 'lodash';
 import { DesktopDatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import AutocompleteDropdown from '../../components/autocomplete/AutocompleteDropdown';
 
 function AddProperty() {
     const [formData, setFormData] = useState({
@@ -46,8 +47,10 @@ function AddProperty() {
                     inputProps={{ maxLength: 155 }}
                     margin="normal"
                 />
-                <Grid container>
-                    <Grid item xs={5}>
+                                <AutocompleteDropdown/>
+
+                <Grid container  justifyContent={'space-between'}>
+                    <Grid item xs={6}>
                         <TextField
                             select
                             required
@@ -65,7 +68,7 @@ function AddProperty() {
                             ))}
                         </TextField>
                     </Grid>
-                    <Grid item xs={5}>
+                    <Grid item >
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DesktopDatePicker
                                 label="Available From"
