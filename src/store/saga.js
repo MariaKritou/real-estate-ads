@@ -1,9 +1,9 @@
 import { all, fork } from 'redux-saga/effects'
-// import { watchAuthSaga } from '../features/loginComponent/authSaga';
+import { watchPropertySaga } from '../pages/properties/propertiesSaga';
 
 export default function* rootSaga() {
   yield all([
-    // watchAuthSaga,
+    watchPropertySaga,
     // more sagas from different files
   ].map(fork));
 }
