@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { Box, Stack } from '@mui/material';
+import { Box, Chip, Stack } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn'; // For location icon
 import HomeIcon from '@mui/icons-material/Home'; // For property type icon
 import ContactPhoneIcon from '@mui/icons-material/ContactPhoneOutlined'; // For property type icon
@@ -46,9 +46,15 @@ export default function CardProperty({ property }) {
               {capitalize(property.type)}
             </Typography>
           </Box>
+          <Box display="flex" alignItems="center">
+
           <Typography variant="body2" color="text.secondary">
             {property.priceDetails.amount}€
           </Typography>
+          {property.priceDetails.isNegotiable && (
+            <Chip label="negotiable" size="small" color="success" sx={{ ml: 1 }}/>
+          )}
+          </Box>
         </Stack>
         <Typography variant="body2" mt={1}>
           {truncateText(property.description, 100)}
