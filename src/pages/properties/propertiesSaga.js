@@ -2,7 +2,7 @@ import {
     takeLatest, put, call,
 } from 'redux-saga/effects';
 import { propertyService } from '../../services/propertyService';
-import { addProperty, addPropertyRequest, fetchPropertiesRequest, setProperties, setRequestState } from './propertiesSlice';
+import { addProperty, addPropertyRequest, fetchPropertiesRequest, setProperties } from './propertiesSlice';
 import { toast } from 'react-toastify';
 
 function* fetchPropertiesRequestSaga() {
@@ -32,11 +32,9 @@ function* addPropertyRequestSaga(action) {
             toast.success(propertyResponse.message);
         }
         else{
-            yield put(setRequestState(false))
             toast.error(propertyResponse.message);
         }
     } catch (error) {
-        yield put(setRequestState(false))
         toast.error('Property not saved, please try again later!');
         console.log('Property creation ERROR: ', error)
     }
