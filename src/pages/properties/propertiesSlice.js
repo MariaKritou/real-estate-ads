@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const PROPERTIES_SLICE = 'PROPERTIES_SLICE';
 
-const initialState = {
+export const initialState = {
   properties: [],
 };
 

@@ -1,19 +1,23 @@
 import apiClient from "./apiService";
 
-
-const fetchProperties = async () => {
-    const response = await apiClient.get('/properties');
+// Reusable API request function
+const makeApiRequest = async (method, url, data = null) => {
+    const response = await apiClient[method](url, data);
     return response.data;
 };
 
-const addProperty = async (data) => {
-    const response = await apiClient.post('/properties', data);
-    return response.data;
+// Service functions
+const fetchProperties = () => {
+    return makeApiRequest('get', '/properties');
 };
 
-const fetchLocations = async (query) => {
-    const response = await apiClient.get(`/properties/locations?search=${encodeURIComponent(query)}`);
-    return response.data;
+const addProperty = (data) => {
+    return makeApiRequest('post', '/properties', data);
+};
+
+const fetchLocations = (query) => {
+    const url = `/properties/locations?search=${encodeURIComponent(query)}`;
+    return makeApiRequest('get', url);
 };
 
 export const propertyService = {
