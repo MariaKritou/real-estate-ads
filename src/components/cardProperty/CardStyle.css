@@ -1,0 +1,24 @@
+.cardRoot {
+    display: block;
+    width: 300px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.cardRoot:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cardContentContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100% - 140px); /* Adjust based on CardMedia height */
+
+}
+
+.iconSpacing {
+    margin-right: 4px;
+}
