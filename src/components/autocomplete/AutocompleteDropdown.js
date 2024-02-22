@@ -13,11 +13,10 @@ function AutocompleteDropdown({
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState([]);
 
-  // Define the debounced function
-  const debouncedSearch = async (query) => {
+  const debouncedSearch = useMemo(() => debounce(async (query) => {
     if (query.length >= 3) {
       try {
-        const response = await fetchOptions(query); // Use the fetchOptions prop
+        const response = await fetchOptions(query);
         setOptions(response);
       } catch (error) {
         console.error('Failed to fetch results:', error);
@@ -26,39 +25,31 @@ function AutocompleteDropdown({
     } else {
       setOptions([]);
     }
-  };
-
-  const debouncedMyFunction = useMemo(() => debounce(debouncedSearch, 1000), []);
+  }, 1000), [fetchOptions]);
 
   useEffect(() => {
-    debouncedMyFunction(inputValue);
-
-    // Since fetchResults is re-created on each render (debounced function),
-    // it's not directly added as a dependency to useEffect.
-  }, [inputValue]); // Depend on inputValue to trigger the API call
-
-  const handleOptionSelect = (newValue) => {
-    onOptionSelect(newValue);
-
-    if (newValue === null) {
-      setOptions([]);
-    }
-  }
+    debouncedSearch(inputValue);
+  }, [inputValue, debouncedSearch]);
 
   return (
     <Autocomplete
       freeSolo
       options={options}
-      onChange={(event, newValue) => handleOptionSelect(newValue)}
+      onChange={(event, newValue) => onOptionSelect(newValue)}
       getOptionLabel={getOptionLabel}
       renderOption={renderOption}
+      onInputChange={(event, newInputValue, reason) => {
+        setInputValue(newInputValue);
+        if (reason === 'clear') {
+          setOptions([]);
+        }
+      }}
       renderInput={(params) => (
         <TextField
           {...params}
           label="Search*"
-          margin='normal'
+          margin="normal"
           variant="outlined"
-          onChange={(event) => setInputValue(event.target.value)}
           error={!!autocompleteError}
           helperText={autocompleteErrorText}
         />
