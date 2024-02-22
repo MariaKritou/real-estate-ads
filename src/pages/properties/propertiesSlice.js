@@ -10,15 +10,21 @@ export const propertiesSlice = createSlice({
   name: PROPERTIES_SLICE,
   initialState,
   reducers: {
-    addProperty: (state, action) => {
-      state.properties = [...state.properties, action.property]
+    setProperties: (state, action) => {
+      state.properties = action.payload;
     },
+    addProperty: (state, action) => {
+      state.properties = [...state.properties, action.payload]
+    },
+    fetchPropertiesRequest: () => { },
     addPropertyRequest: () => { },
   },
 });
 
 export const {
+  setProperties,
   addProperty,
+  fetchPropertiesRequest,
   addPropertyRequest,
 } = propertiesSlice.actions;
 

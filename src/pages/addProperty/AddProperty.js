@@ -9,17 +9,19 @@ import { addPropertyRequest } from '../properties/propertiesSlice';
 import { propertyService } from '../../services/propertyService';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
+const initialFormData = {
+    title: '',
+    type: '',
+    amount: '',
+    isNegotiable: false,
+    description: '',
+    availableFrom: null,
+};
+
 function AddProperty() {
     const dispatch = useDispatch();
     const [area, setArea] = useState(null)
-    const [formData, setFormData] = useState({
-        title: '',
-        type: '',
-        amount: '',
-        isNegotiable: false,
-        description: '',
-        availableFrom: null,
-    });
+    const [formData, setFormData] = useState(initialFormData);
     const [formErrors, setFormErrors] = useState({});
 
     const validate = () => {
@@ -88,7 +90,16 @@ function AddProperty() {
             area,
         };
 
-        dispatch(addPropertyRequest(propertyData));
+        new Promise((resolve, reject) => {
+            dispatch(addPropertyRequest({
+                data: propertyData,
+                meta: { resolve, reject },
+            }));
+        })
+            .then(() => {
+                // Handle success
+                setFormData(initialFormData); // Reset form data
+            })
     };
 
     const renderLocationOptions = (props, option) => (
