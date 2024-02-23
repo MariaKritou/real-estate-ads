@@ -145,6 +145,7 @@ function AddProperty() {
                     onOptionSelect={handleOptionSelect}
                     autocompleteError={!!formErrors.area}
                     autocompleteErrorText={formErrors.area}
+                    label='Location*'
                 />
                 <Grid container justifyContent={'space-between'}>
                     <Grid item xs={6}>
