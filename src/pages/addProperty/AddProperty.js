@@ -124,8 +124,9 @@ function AddProperty() {
             }));
         })
             .then(() => {
-                // Handle success
+                // Handle success 
                 setFormData(initialFormData); // Reset form data
+                setArea(null); // Reset form data
             })
     };
 
@@ -158,7 +159,7 @@ function AddProperty() {
     * @param {{ mainText: string, secondaryText: string }} option
     * @returns {string}
     */
-    const getLocationOptionLabel = (option) => (option.mainText + ", " + option.secondaryText) || '';
+    const getLocationOptionLabel = (option) => option ? `${option.mainText}, ${option.secondaryText}` : '';
 
     return (
         <Container maxWidth="sm">
@@ -177,6 +178,7 @@ function AddProperty() {
                     helperText={formErrors.title}
                 />
                 <AutocompleteDropdown
+                    selectedOption={area}
                     fetchOptions={propertyService.fetchLocations}
                     renderOption={renderLocationOptions}
                     getOptionLabel={getLocationOptionLabel}

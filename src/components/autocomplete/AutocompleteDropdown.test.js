@@ -21,6 +21,7 @@ describe('AutocompleteDropdown', () => {
     it('renders without errors', () => {
         render(
             <AutocompleteDropdown
+                selectedOption={null}
                 onOptionSelect={mockOnOptionSelect}
                 fetchOptions={mockFetchOptions}
                 getOptionLabel={mockGetOptionLabel}
@@ -36,6 +37,7 @@ describe('AutocompleteDropdown', () => {
 
         render(
             <AutocompleteDropdown
+                selectedOption={null}
                 onOptionSelect={mockOnOptionSelect}
                 fetchOptions={mockFetchOptions}
                 getOptionLabel={mockGetOptionLabel}
@@ -55,6 +57,7 @@ describe('AutocompleteDropdown', () => {
     it('clears options on clear input', async () => {
         render(
             <AutocompleteDropdown
+                selectedOption={null}
                 onOptionSelect={mockOnOptionSelect}
                 fetchOptions={mockFetchOptions}
                 getOptionLabel={mockGetOptionLabel}
@@ -74,6 +77,7 @@ describe('AutocompleteDropdown', () => {
     it('displays error text when autocompleteError is true', async () => {
         const { rerender } = render(
             <AutocompleteDropdown
+                selectedOption={null}
                 onOptionSelect={mockOnOptionSelect}
                 fetchOptions={mockFetchOptions}
                 getOptionLabel={mockGetOptionLabel}
@@ -90,6 +94,7 @@ describe('AutocompleteDropdown', () => {
 
         rerender(
             <AutocompleteDropdown
+                selectedOption={null}
                 onOptionSelect={mockOnOptionSelect}
                 fetchOptions={mockFetchOptions}
                 getOptionLabel={mockGetOptionLabel}
@@ -106,6 +111,7 @@ describe('AutocompleteDropdown', () => {
         mockFetchOptions.mockResolvedValue([{ label: 'Option 1' }, { label: 'Option 2' }]);
         render(
             <AutocompleteDropdown
+                selectedOption={null}
                 onOptionSelect={mockOnOptionSelect}
                 fetchOptions={mockFetchOptions}
                 getOptionLabel={mockGetOptionLabel}
