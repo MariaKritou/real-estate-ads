@@ -125,6 +125,7 @@ function AddProperty() {
 
     return (
         <Container maxWidth="sm">
+            <Typography variant="h5">Create new property</Typography>
             <form onSubmit={handleSubmit}>
                 <TextField
                     fullWidth
