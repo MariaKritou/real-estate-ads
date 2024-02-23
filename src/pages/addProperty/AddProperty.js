@@ -18,12 +18,19 @@ const initialFormData = {
     availableFrom: null,
 };
 
+/**
+ * This function is used to add a new property
+ */
 function AddProperty() {
     const dispatch = useDispatch();
     const [area, setArea] = useState(null)
     const [formData, setFormData] = useState(initialFormData);
     const [formErrors, setFormErrors] = useState({});
 
+    /**
+   * This function is used to validate the form data
+   * @returns {boolean}
+   */
     const validate = () => {
         let errors = {};
         let isValid = true;
@@ -45,6 +52,11 @@ function AddProperty() {
         return isValid;
     };
 
+    /**
+ * This function is used to handle the input change event
+ * for title, type, amount, isNegotiable, description
+ * @param {Event} e
+ */
     const handleInputChange = (e) => {
         const { name, value, type, checked } = e.target;
         // Check if the input change is for the 'amount' field and if the value is numeric
@@ -65,15 +77,30 @@ function AddProperty() {
         setFormErrors({ ...formErrors, [name]: '' });
     };
 
+    /**
+ * This function is used to handle the date change event
+ * also removes the error message for the 'availableFrom' field
+ * @param {Date} newValue
+ */
     const handleDateChange = (newValue) => {
         setFormData({ ...formData, availableFrom: newValue });
         setFormErrors({ ...formErrors, availableFrom: '' });
     };
 
+    /**
+   * This function is used to handle the option select event
+   * @param {{ placeId: string, mainText: string, secondaryText: string }} option
+   */
     const handleOptionSelect = (option) => {
         setArea(option);
     };
 
+    /**
+     * This function is used to handle the submit event
+     * If validation is successful, it calls the addPropertyRequest action
+     * If the action response is successful, it sets the form data to the initial state
+     * @param {Event} e
+     */
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!validate()) return; // Prevent submission if validation fails
@@ -102,6 +129,12 @@ function AddProperty() {
             })
     };
 
+    /**
+     * This function is used to render the location options for the autocomplete dropdown menu
+     * @param {Object} props
+     * @param {{ mainText: string, secondaryText: string }} option
+     * @returns {JSX.Element}
+     */
     const renderLocationOptions = (props, option) => (
         <li {...props}>
             <Grid container alignItems="center">
@@ -120,8 +153,12 @@ function AddProperty() {
         </li>
     );
 
+    /**
+    * This function is used to get the location option label for the autocomplete dropdown
+    * @param {{ mainText: string, secondaryText: string }} option
+    * @returns {string}
+    */
     const getLocationOptionLabel = (option) => (option.mainText + ", " + option.secondaryText) || '';
-
 
     return (
         <Container maxWidth="sm">

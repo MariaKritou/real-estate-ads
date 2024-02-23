@@ -16,21 +16,34 @@ import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 240;
-const navItems = [{name: 'Home', path: '/'}, { name: 'New Property', path: '/add'}];
+const navItems = [{ name: 'Home', path: '/' }, { name: 'New Property', path: '/add' }];
 
+/**
+ * Material UI component that represents the header of the application.
+ * For smaller screens it changes to a burger menu
+ * @param {Object} props - component properties
+ * @param {Object} props.window - reference to the window object
+ * @returns {JSX.Element} - the header component
+ */
 function Header(props) {
   const navigate = useNavigate();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
+   /**
+   * Event handler for toggling the mobile drawer
+   */
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
+  /**
+   * Renders the drawer for the mobile view
+   */
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+        REAL ESTATE
       </Typography>
       <Divider />
       <List>
@@ -45,6 +58,10 @@ function Header(props) {
     </Box>
   );
 
+  
+  /**
+   * Returns the DOM element that should be used as the container for the drawer
+   */
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
@@ -66,7 +83,7 @@ function Header(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            REAL ESTATE 
+            REAL ESTATE
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (

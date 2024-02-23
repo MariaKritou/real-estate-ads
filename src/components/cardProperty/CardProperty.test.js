@@ -2,7 +2,7 @@
 import React from 'react';
 import { render, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import CardProperty from './CardProperty'; // Update the import path as necessary
+import CardProperty from './CardProperty';
 
 describe('CardProperty', () => {
     const mockProperty = {
@@ -53,18 +53,13 @@ describe('CardProperty', () => {
         expect(screen.queryByText('negotiable')).not.toBeInTheDocument();
     });
 
-    // If there are specific interactions to test, like clicking the Save or Contact buttons,
-    // you can test those interactions here. For example:
     it('calls appropriate action on save button click', async () => {
         render(<CardProperty property={mockProperty} />);
-        // Assuming you want to test the Save button's onClick functionality, you would first need to mock it
-        // For demonstration, let's simulate a user clicking the Save button
+
         const saveButton = screen.getByRole('button', { name: 'Save' });
 
         await act(async () => {
             await userEvent.click(saveButton);
         });
-        // Verify the expected outcome, such as a function call or state change.
-        // This might require you to mock and pass in functions as props to CardProperty, or to observe changes in your app's state or UI.
     });
 });

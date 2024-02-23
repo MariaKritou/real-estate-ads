@@ -4,14 +4,23 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPropertiesRequest, propertiesSliceSelector } from './propertiesSlice';
 
+/**
+ * Renders the properties list
+ */
 function Properties() {
     const dispatch = useDispatch();
     const { properties } = useSelector(propertiesSliceSelector);
 
+    /**
+       * Runs the fetch properties request action if the properties list is empty
+       */
     useEffect(() => {
         properties.length === 0 && dispatch(fetchPropertiesRequest())
     }, [dispatch, properties])
 
+    /**
+       * Renders the property cards
+       */
     const renderPropertyCards = () => {
         return properties.map((property) => (
             <Grid key={property?._id} item>

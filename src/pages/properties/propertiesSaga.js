@@ -5,6 +5,11 @@ import { propertyService } from '../../services/propertyService';
 import { addProperty, addPropertyRequest, fetchPropertiesRequest, setProperties } from './propertiesSlice';
 import { toast } from 'react-toastify';
 
+/**
+ * Fetches the properties from the backend and dispatches the properties to the store.
+ * Shows toast notifications on success or error
+ * @returns {void}
+ */
 function* fetchPropertiesRequestSaga() {
     try {
         const propertyResponse = yield call(propertyService.fetchProperties);
@@ -22,6 +27,11 @@ function* fetchPropertiesRequestSaga() {
     }
 }
 
+/**
+ * Sends a new property to the backend and dispatches the properties to the store if the response is successful.
+ * Shows toast notifications on success or error
+ * @returns {void}
+ */
 function* addPropertyRequestSaga(action) {
     try {
         const propertyResponse = yield call(propertyService.addProperty, action.payload.data);

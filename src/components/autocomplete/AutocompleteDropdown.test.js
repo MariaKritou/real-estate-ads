@@ -5,7 +5,7 @@ import { render, screen, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import AutocompleteDropdown from './AutocompleteDropdown';
 
-// Assuming lodash debounce is mocked to simplify asynchronous behavior handling
+// Lodash debounce is mocked
 jest.mock('lodash/debounce', () => jest.fn((fn) => fn));
 
 describe('AutocompleteDropdown', () => {
@@ -44,12 +44,10 @@ describe('AutocompleteDropdown', () => {
             />
         );
 
-        // Wrap the user interaction and subsequent state updates in act
         await act(async () => {
             await userEvent.type(screen.getByRole('combobox'), 'Option');
         });
 
-        // waitFor is already wrapped in act
         await waitFor(() => expect(mockFetchOptions).toHaveBeenCalledWith('Option'));
         await waitFor(() => expect(screen.getByText('Option 1')).toBeInTheDocument());
     });
@@ -86,6 +84,7 @@ describe('AutocompleteDropdown', () => {
             />
         );
 
+        // THIS TEST HERE FAILS EVEN THOUGH IT SHOULD NOT - NEEDS TO BE CHECKED
         // Check that "Error text" is not in the document initially
         // await waitFor(() => expect(screen.queryByText('Error text')).not.toBeInTheDocument());
 

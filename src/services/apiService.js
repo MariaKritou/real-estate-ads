@@ -17,7 +17,6 @@ apiClient.interceptors.request.use(
       return config;
     },
     error => {
-      // Do something with request error
       return Promise.reject(error);
     }
   );
@@ -26,12 +25,10 @@ apiClient.interceptors.request.use(
   apiClient.interceptors.response.use(
     response => {
       // Any status code within the range of 2xx causes this function to trigger
-      // Do something with response data
       return response;
     },
     error => {
       // Any status codes outside the range of 2xx cause this function to trigger
-      // Do something with response error
   
       // Handle common errors globally
       if (error.response) {
@@ -48,7 +45,6 @@ apiClient.interceptors.request.use(
         console.error("Error", error.message);
       }
   
-      // Optionally forward error to be handled locally
       return Promise.reject(error);
     }
   );
