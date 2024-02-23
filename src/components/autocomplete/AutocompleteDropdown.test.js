@@ -25,9 +25,10 @@ describe('AutocompleteDropdown', () => {
                 fetchOptions={mockFetchOptions}
                 getOptionLabel={mockGetOptionLabel}
                 renderOption={mockRenderOption}
+                label='Location'
             />
         );
-        expect(screen.getByLabelText(/search\*/i)).toBeInTheDocument();
+        expect(screen.getByLabelText(/Location/i)).toBeInTheDocument();
     });
 
     it('debounces input change and fetches options', async () => {
@@ -39,6 +40,7 @@ describe('AutocompleteDropdown', () => {
                 fetchOptions={mockFetchOptions}
                 getOptionLabel={mockGetOptionLabel}
                 renderOption={mockRenderOption}
+                label='Location'
             />
         );
 
@@ -59,6 +61,7 @@ describe('AutocompleteDropdown', () => {
                 fetchOptions={mockFetchOptions}
                 getOptionLabel={mockGetOptionLabel}
                 renderOption={mockRenderOption}
+                label='Location'
             />
         );
 
@@ -79,6 +82,7 @@ describe('AutocompleteDropdown', () => {
                 renderOption={mockRenderOption}
                 autocompleteError={false}
                 autocompleteErrorText="Error text"
+                label='Location'
             />
         );
 

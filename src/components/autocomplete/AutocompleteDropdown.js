@@ -9,6 +9,7 @@ function AutocompleteDropdown({
   fetchOptions, // Function for fetching options
   renderOption, // Function for rendering each option
   getOptionLabel, // Function for getting option label
+  label,
 }) {
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState([]);
@@ -47,7 +48,7 @@ function AutocompleteDropdown({
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Search*"
+          label={label}
           margin="normal"
           variant="outlined"
           error={!!autocompleteError}
