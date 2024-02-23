@@ -20,7 +20,7 @@ Before you begin, ensure you have the following installed on your system:
 
 To set up the project locally, follow these steps:
 
-- Clone the project : https://github.com/MariaKritou/real-estate-ads-api.git
+- Clone the project from the main branch: https://github.com/MariaKritou/real-estate-ads-api.git
 - npm install
 
 - (please run backend first: https://github.com/MariaKritou/real-estate-ads-api)
