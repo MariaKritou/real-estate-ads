@@ -3,9 +3,11 @@
 ## Overview
 
 This React.js application is designed to facilitate the management and advertisement of real estate properties. It features a user-friendly interface developed with Material UI, ensuring a responsive design. The application consists of two main pages:
-
-Home Page: Displays a list of all properties that have been added to the platform.
-New Property Page: Provides a form where users can submit information about their property to create a new advertisement. The form includes fields for property title, type, price, location,  negotiability, description, and availability date.
+<br />
+Home Page: Displays a list of all properties that have been added to the platform.<br />
+<br />
+New Property Page: Provides a form where users can submit information about their property to create a new advertisement. The form includes fields for property title, type, price, location,  negotiability, description, and availability date.<br />
+<br />
 Behind the scenes, the app leverages Redux Saga for efficient state management, ensuring that the application's state is updated in real-time. This allows newly created property ads to be immediately visible on the Home page.
 
 ## Prerequisites
