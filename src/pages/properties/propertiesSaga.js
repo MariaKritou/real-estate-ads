@@ -5,7 +5,7 @@ import { propertyService } from '../../services/propertyService';
 import { addProperty, addPropertyRequest, fetchPropertiesRequest, setProperties } from './propertiesSlice';
 import { toast } from 'react-toastify';
 
-function* fetchPropertiesRequestSaga() {
+export function* fetchPropertiesRequestSaga() {
     try {
         const propertyResponse = yield call(propertyService.fetchProperties);
 
