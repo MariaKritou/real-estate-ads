@@ -2,7 +2,7 @@
 
 ## Overview
 
-This React.js application is designed to facilitate the management and advertisement of real estate properties. It features a user-friendly interface developed with Material UI, ensuring a responsive design. The application consists of two main pages:
+This React.js application is designed to facilitate the management and advertisement of real estate properties. It features a user-friendly interface developed with Material UI, ensuring a responsive design. The application consists of two main pages:<br />
 <br />
 Home Page: Displays a list of all properties that have been added to the platform.<br />
 <br />
